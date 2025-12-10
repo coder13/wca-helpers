@@ -29,8 +29,8 @@ export function Ao5(results: AttemptResult[]): AttemptResult | null {
   let avg = Math.round(
     (comparableResults.reduce(
       (a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10),
-      0,
-    ) as number) / 3,
+      0
+    ) as number) / 3
   );
   if (avg > 60000) {
     avg = Math.round(avg / 100) * 100;
@@ -46,7 +46,10 @@ export function Mo5(results: AttemptResult[]): AttemptResult | null {
   return meanOfN(5, results);
 }
 
-export function meanOfN(n: number, results: AttemptResult[]): AttemptResult | null {
+export function meanOfN(
+  n: number,
+  results: AttemptResult[]
+): AttemptResult | null {
   results = results.filter((r) => r !== 0); // remove non-existing attempts
 
   if (results.some(isMultiResult)) return null; // cannot calculate average or mean for MBLD
@@ -61,8 +64,8 @@ export function meanOfN(n: number, results: AttemptResult[]): AttemptResult | nu
   let avg = Math.round(
     (results.reduce(
       (a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10),
-      0,
-    ) as number) / n,
+      0
+    ) as number) / n
   );
   if (avg > 60000) {
     avg = Math.round(avg / 100) * 100;
