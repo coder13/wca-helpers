@@ -1,5 +1,5 @@
 import { AttemptResult } from '../models/attemptResult';
-import { isMultiResult, isMultiResultDnf } from './result';
+import { isMultiResult } from './result';
 
 export function Ao5(results: AttemptResult[]): AttemptResult | null {
   results = results.filter((r) => r !== 0);
@@ -29,8 +29,8 @@ export function Ao5(results: AttemptResult[]): AttemptResult | null {
   let avg = Math.round(
     (comparableResults.reduce(
       (a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10),
-      0,
-    ) as number) / 3,
+      0
+    ) as number) / 3
   );
   if (avg > 60000) {
     avg = Math.round(avg / 100) * 100;
@@ -39,22 +39,11 @@ export function Ao5(results: AttemptResult[]): AttemptResult | null {
 }
 
 export function Mo3(results: AttemptResult[]): AttemptResult | null {
-  return meanOfN(3, results);
-}
-
-export function Mo5(results: AttemptResult[]): AttemptResult | null {
-  return meanOfN(5, results);
-}
-
-export function meanOfN(
-  n: number,
-  results: AttemptResult[],
-): AttemptResult | null {
   results = results.filter((r) => r !== 0); // remove non-existing attempts
 
   if (results.some(isMultiResult)) return null; // cannot calculate average or mean for MBLD
 
-  if (results.length < n) return null;
+  if (results.length !== 3) return null;
 
   if (results.filter((r) => r < 0).length > 0) {
     // we have at least 1 DNF or DNS, so mean is DNF by default
@@ -64,8 +53,8 @@ export function meanOfN(
   let avg = Math.round(
     (results.reduce(
       (a, b) => parseInt(`${a}`, 10) + parseInt(`${b}`, 10),
-      0,
-    ) as number) / n,
+      0
+    ) as number) / 3
   );
   if (avg > 60000) {
     avg = Math.round(avg / 100) * 100;
