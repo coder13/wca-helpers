@@ -52,10 +52,10 @@ export function getFormatTrimBest(format: RoundFormat): number {
     case '1':
     case '2':
     case '3':
-    case '5':
     case 'm':
       return 0;
     case 'a':
+    case '5':
       return 1;
   }
 }
@@ -65,10 +65,10 @@ export function getFormatTrimWorst(format: RoundFormat): number {
     case '1':
     case '2':
     case '3':
-    case '5':
     case 'm':
       return 0;
     case 'a':
+    case '5':
       return 1;
   }
 }
