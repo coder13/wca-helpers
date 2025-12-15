@@ -8,6 +8,8 @@ export function getFormatName(format: RoundFormat): string {
       return 'Best of 2';
     case '3':
       return 'Best of 3';
+    case '5':
+      return 'Best of 5';
     case 'a':
       return 'Average of 5';
     case 'm':
@@ -20,6 +22,7 @@ export function getFormatRanking(format: RoundFormat): RankingType[] {
     case '1':
     case '2':
     case '3':
+    case '5':
       return ['single'];
     case 'a':
     case 'm':
@@ -35,6 +38,8 @@ export function getFormatExpectedSolves(format: RoundFormat): number {
       return 2;
     case '3':
       return 3;
+    case '5':
+      return 5;
     case 'a':
       return 5;
     case 'm':
@@ -50,6 +55,7 @@ export function getFormatTrimBest(format: RoundFormat): number {
     case 'm':
       return 0;
     case 'a':
+    case '5':
       return 1;
   }
 }
@@ -62,6 +68,7 @@ export function getFormatTrimWorst(format: RoundFormat): number {
     case 'm':
       return 0;
     case 'a':
+    case '5':
       return 1;
   }
 }
