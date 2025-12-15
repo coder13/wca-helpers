@@ -1,4 +1,4 @@
-# WCA Helpers
+\*\*\*\*# WCA Helpers
 
 > Helpers and class definitions for WCA and WCIF
 
@@ -18,11 +18,18 @@ npm install @wca/helpers --save
 
 ## Development setup
 
-## Meta
+```sh
+git clone
+cd wca-helpers
+npm install
+npm run build
+npm test
+```
 
-Distributed under the GPL license. See `LICENSE` for more information.
+## Release process
 
-[https://github.com/thewca/wca-helpers](https://github.com/thewca/wca-helpers)
+- Create a new PR bumping `package.json` version (and update `CHANGELOG.md` if needed).
+- Merge the change to `master`; the `Release` GitHub Action will run tests/build, create a tag `v<version>`, publish to npm, and generate a GitHub release.
 
 ## Contributing
 
@@ -31,3 +38,9 @@ Distributed under the GPL license. See `LICENSE` for more information.
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
+
+## Meta
+
+Distributed under the GPL license. See `LICENSE` for more information.
+
+[https://github.com/thewca/wca-helpers](https://github.com/thewca/wca-helpers)
