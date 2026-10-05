@@ -13,7 +13,7 @@ export interface Round {
   format: RoundFormat;
   timeLimit: TimeLimit | null;
   cutoff: Cutoff | null;
-  participationRuleset: ParticipationRuleset;
+  participationRuleset: ParticipationRuleset | null;
   results: Result[];
   scrambleSetCount?: number;
   scrambleSets?: ScrambleSet[];

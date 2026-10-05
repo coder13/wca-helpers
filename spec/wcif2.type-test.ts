@@ -7,6 +7,7 @@ import {
   Qualification,
   ReservedPlaces,
   ResultCondition,
+  Round,
   RoundFormat,
 } from '../src/models';
 
@@ -68,7 +69,7 @@ const qualifications: Qualification[] = resultConditions.map(
 );
 
 export const competition: Competition = {
-  formatVersion: '2.1.1',
+  formatVersion: '2.2',
   id: 'Example2026',
   name: 'Example 2026',
   shortName: 'Example 2026',
@@ -297,11 +298,24 @@ const invalidReservedPlaces: ReservedPlaces = {
   count: 8,
 };
 
-const invalidParticipationRuleset: ParticipationRuleset = {
-  // @ts-expect-error WCIF 2 participationSource is an object.
+const legacyParticipationRuleset: ParticipationRuleset = {
   participationSource: null,
   reservedPlaces: null,
 };
+
+const legacyRoundParticipationRuleset: Round['participationRuleset'] = null;
+
+const competitionWithoutIdValue: Omit<Competition, 'id'> = competition;
+
+// @ts-expect-error WCIF 2.2 requires Competition.id.
+const competitionWithoutId: Competition = competitionWithoutIdValue;
+
+const competitionWithoutFormatVersionValue: Omit<Competition, 'formatVersion'> =
+  competition;
+
+// @ts-expect-error WCIF 2.2 requires Competition.formatVersion.
+const competitionWithoutFormatVersion: Competition =
+  competitionWithoutFormatVersionValue;
 
 // @ts-expect-error WCIF 2 uses Attempt.value instead of Attempt.result.
 const wcif1Attempt: Attempt = { result: 800, reconstruction: null };
@@ -313,5 +327,10 @@ void participationSources;
 void qualifications;
 void competition;
 void invalidReservedPlaces;
-void invalidParticipationRuleset;
+void legacyParticipationRuleset;
+void legacyRoundParticipationRuleset;
+void competitionWithoutIdValue;
+void competitionWithoutId;
+void competitionWithoutFormatVersionValue;
+void competitionWithoutFormatVersion;
 void wcif1Attempt;

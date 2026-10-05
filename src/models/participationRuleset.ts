@@ -27,6 +27,6 @@ export interface ReservedPlaces {
 }
 
 export interface ParticipationRuleset {
-  participationSource: ParticipationSource;
+  participationSource: ParticipationSource | null;
   reservedPlaces: ReservedPlaces | null;
 }
