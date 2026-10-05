@@ -23,8 +23,8 @@ npm install @wca/helpers --save
 
 ## Development setup
 
-Run `npm test` for the unit tests and `npm run typecheck` for the TypeScript
-contract checks.
+Run `npm test` for the unit tests and `npm run typecheck` to check the
+TypeScript source.
 
 ## Release process
 
